@@ -31,13 +31,13 @@ Storage.prototype.addCollection = function (newBook) {
 };
 
 Storage.prototype.removeFromCollection = function (target) {
-  const removeBook =
-    target.previousElementSibling.previousElementSibling.textContent;
+  const removeBook = target.previousElementSibling.previousElementSibling.textContent;
 
   this.collection.filter((book, index) => {
     if (book.title === removeBook) {
       this.collection.splice(index, 1);
     }
+    return this.collection
   });
   localStorage.setItem('collection', JSON.stringify(this.collection));
 };
@@ -47,8 +47,8 @@ Storage.prototype.getBooksFromStorage = function () {
     this.collection = [];
   } else {
     this.collection = JSON.parse(localStorage.getItem('collection'));
-    return this.collection;
   }
+  return this.collection;
 };
 
 UI.prototype.clearInputs = function (element1, element2) {
@@ -86,7 +86,7 @@ function removeBook(e) {
 
 form.addEventListener('submit', addBook);
 bookList.addEventListener('click', removeBook);
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
   const allBooks = storage.getBooksFromStorage();
   console.log(allBooks);
   allBooks.forEach((book) => ui.addBookToUI(book));
