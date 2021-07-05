@@ -4,6 +4,9 @@
 
 It is built as a part of Microverse Web Developer Course.
 
+![Ekran Alıntısı](https://user-images.githubusercontent.com/51737508/124498925-d4989f80-ddc5-11eb-9a99-6eb3126ee9c7.PNG)
+
+
 ## Built With
 
 -HTML
