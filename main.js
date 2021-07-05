@@ -37,7 +37,7 @@ Storage.prototype.removeFromCollection = function (target) {
     if (book.title === removeBook) {
       this.collection.splice(index, 1);
     }
-    return this.collection
+    return this.collection;
   });
   localStorage.setItem('collection', JSON.stringify(this.collection));
 };
