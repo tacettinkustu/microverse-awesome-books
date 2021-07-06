@@ -1,4 +1,3 @@
-// DOM Manipulations
 const form = document.querySelector('.add-book');
 const bookTitle = document.querySelector('.title');
 const bookAuthor = document.querySelector('.author');
@@ -7,7 +6,7 @@ const bookList = document.querySelector('.book-list');
 // Classes
 // Change to class
 class UI {
-  constructor() {}
+
   static addBookToUI(newBook) {
     bookList.innerHTML += `
         <li class='book'>
@@ -18,6 +17,7 @@ class UI {
         </li>
     `;
   }
+
   static clearInputs(element1, element2) {
     element1.value = '';
     element2.value = '';
@@ -41,6 +41,7 @@ class Storage {
   constructor() {
     this.collection = [];
   }
+  
   static addCollection(newBook) {
     this.collection.push(newBook);
     localStorage.setItem('collection', JSON.stringify(this.collection));
