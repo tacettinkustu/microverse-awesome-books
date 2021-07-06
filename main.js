@@ -15,8 +15,7 @@ class Storage {
   }
 
   static removeFromCollection(target) {
-    const removeBook =
-      target.previousElementSibling.previousElementSibling.textContent;
+    const removeBook = target.previousElementSibling.previousElementSibling.textContent;
 
     this.collection.filter((book, index) => {
       if (book.title === removeBook) {
@@ -63,6 +62,8 @@ UI.prototype.removeBookFromUI = function (target) {
   target.parentElement.remove();
 };
 
+const ui = new UI;
+
 // functions
 function addBook(e) {
   const title = bookTitle.value;
@@ -72,15 +73,15 @@ function addBook(e) {
 
   Storage.addCollection(newBook);
 
-  UI.addBookToUI(newBook);
-  UI.clearInputs(bookTitle, bookAuthor);
+  ui.addBookToUI(newBook);
+  ui.clearInputs(bookTitle, bookAuthor);
 
   e.preventDefault();
 }
 
 function removeBook(e) {
   if (e.target.className === 'remove') {
-    UI.removeBookFromUI(e.target);
+    ui.removeBookFromUI(e.target);
     Storage.removeFromCollection(e.target);
   }
 }
@@ -90,5 +91,5 @@ form.addEventListener('submit', addBook);
 bookList.addEventListener('click', removeBook);
 document.addEventListener('DOMContentLoaded', () => {
   const allBooks = Storage.getBooksFromStorage();
-  allBooks.forEach((book) => UI.addBookToUI(book));
+  allBooks.forEach((book) => ui.addBookToUI(book));
 });
