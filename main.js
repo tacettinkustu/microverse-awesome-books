@@ -3,7 +3,7 @@ const bookTitle = document.querySelector('.title');
 const bookAuthor = document.querySelector('.author');
 const bookList = document.querySelector('.book-list');
 
-//class
+// class
 class Storage {
   constructor() {
     this.collection = [];
@@ -41,6 +41,27 @@ function Book(title, author) {
   this.title = title;
   this.author = author;
 }
+
+function UI() {}
+UI.prototype.addBookToUI = function (newBook) {
+  bookList.innerHTML += `
+          <li class='book'>
+            <p class='book-title margin-sm'>${newBook.title}</p>
+            <p class='book-author margin-sm'>${newBook.author}</p>
+            <button class='remove' type='button'>Remove</button>
+            <hr />
+          </li>
+      `;
+};
+
+UI.prototype.clearInputs = function (element1, element2) {
+  element1.value = '';
+  element2.value = '';
+};
+
+UI.prototype.removeBookFromUI = function (target) {
+  target.parentElement.remove();
+};
 
 // functions
 function addBook(e) {
