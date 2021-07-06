@@ -3,6 +3,43 @@ const bookTitle = document.querySelector('.title');
 const bookAuthor = document.querySelector('.author');
 const bookList = document.querySelector('.book-list');
 
+class Storage {
+  constructor() {
+    this.collection = [];
+  }
+
+  static addCollection(newBook) {
+    this.collection.push(newBook);
+    localStorage.setItem('collection', JSON.stringify(this.collection));
+  }
+
+  static removeFromCollection(target) {
+    const removeBook = target.previousElementSibling.previousElementSibling.textContent;
+
+    this.collection.filter((book, index) => {
+      if (book.title === removeBook) {
+        this.collection.splice(index, 1);
+      }
+      return this.collection;
+    });
+    localStorage.setItem('collection', JSON.stringify(this.collection));
+  }
+
+  static getBooksFromStorage() {
+    if (localStorage.getItem('collection') === null) {
+      this.collection = [];
+    } else {
+      this.collection = JSON.parse(localStorage.getItem('collection'));
+    }
+    return this.collection;
+  }
+}
+
+function Book(title, author) {
+  this.title = title;
+  this.author = author;
+}
+
 function UI() {}
 
 UI.prototype.addBookToUI = function (newBook) {
@@ -16,41 +53,6 @@ UI.prototype.addBookToUI = function (newBook) {
     `;
 };
 
-function Book(title, author) {
-  this.title = title;
-  this.author = author;
-}
-
-function Storage() {
-  this.collection = [];
-}
-
-Storage.prototype.addCollection = function (newBook) {
-  this.collection.push(newBook);
-  localStorage.setItem('collection', JSON.stringify(this.collection));
-};
-
-Storage.prototype.removeFromCollection = function (target) {
-  const removeBook = target.previousElementSibling.previousElementSibling.textContent;
-
-  this.collection.filter((book, index) => {
-    if (book.title === removeBook) {
-      this.collection.splice(index, 1);
-    }
-    return this.collection;
-  });
-  localStorage.setItem('collection', JSON.stringify(this.collection));
-};
-
-Storage.prototype.getBooksFromStorage = function () {
-  if (localStorage.getItem('collection') === null) {
-    this.collection = [];
-  } else {
-    this.collection = JSON.parse(localStorage.getItem('collection'));
-  }
-  return this.collection;
-};
-
 UI.prototype.clearInputs = function (element1, element2) {
   element1.value = '';
   element2.value = '';
@@ -61,7 +63,6 @@ UI.prototype.removeBookFromUI = function (target) {
 };
 
 const ui = new UI();
-const storage = new Storage();
 
 function addBook(e) {
   const title = bookTitle.value;
@@ -69,7 +70,7 @@ function addBook(e) {
 
   const newBook = new Book(title, author);
 
-  storage.addCollection(newBook);
+  Storage.addCollection(newBook);
 
   ui.addBookToUI(newBook);
   ui.clearInputs(bookTitle, bookAuthor);
@@ -80,14 +81,14 @@ function addBook(e) {
 function removeBook(e) {
   if (e.target.className === 'remove') {
     ui.removeBookFromUI(e.target);
-    storage.removeFromCollection(e.target);
+    Storage.removeFromCollection(e.target);
   }
 }
 
 form.addEventListener('submit', addBook);
 bookList.addEventListener('click', removeBook);
 document.addEventListener('DOMContentLoaded', () => {
-  const allBooks = storage.getBooksFromStorage();
+  const allBooks = Storage.getBooksFromStorage();
   console.log(allBooks);
   allBooks.forEach((book) => ui.addBookToUI(book));
 });
