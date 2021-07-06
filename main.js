@@ -6,7 +6,6 @@ const bookList = document.querySelector('.book-list');
 // Classes
 // Change to class
 class UI {
-
   static addBookToUI(newBook) {
     bookList.innerHTML += `
         <li class='book'>
@@ -41,15 +40,14 @@ class Storage {
   constructor() {
     this.collection = [];
   }
-  
+
   static addCollection(newBook) {
     this.collection.push(newBook);
     localStorage.setItem('collection', JSON.stringify(this.collection));
   }
 
   static removeFromCollection(target) {
-    const removeBook =
-      target.previousElementSibling.previousElementSibling.textContent;
+    const removeBook = target.previousElementSibling.previousElementSibling.textContent;
 
     this.collection.filter((book, index) => {
       if (book.title === removeBook) {
