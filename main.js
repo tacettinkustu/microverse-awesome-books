@@ -62,7 +62,7 @@ UI.prototype.removeBookFromUI = function (target) {
   target.parentElement.remove();
 };
 
-const ui = new UI;
+const ui = new UI();
 
 // functions
 function addBook(e) {
