@@ -1,11 +1,11 @@
-//DOM Manipulations
-const form = document.querySelector(".add-book");
-const bookTitle = document.querySelector(".title");
-const bookAuthor = document.querySelector(".author");
-const bookList = document.querySelector(".book-list");
+// DOM Manipulations
+const form = document.querySelector('.add-book');
+const bookTitle = document.querySelector('.title');
+const bookAuthor = document.querySelector('.author');
+const bookList = document.querySelector('.book-list');
 
-//Classes
-//Change to class
+// Classes
+// Change to class
 class UI {
   constructor() {}
   static addBookToUI(newBook) {
@@ -19,8 +19,8 @@ class UI {
     `;
   }
   static clearInputs(element1, element2) {
-    element1.value = "";
-    element2.value = "";
+    element1.value = '';
+    element2.value = '';
   }
 
   static removeBookFromUI(target) {
@@ -28,7 +28,7 @@ class UI {
   }
 }
 
-//Change to class
+// Change to class
 class Book {
   constructor(title, author) {
     this.title = title;
@@ -36,14 +36,14 @@ class Book {
   }
 }
 
-//Change to class
+// Change to class
 class Storage {
   constructor() {
     this.collection = [];
   }
   static addCollection(newBook) {
     this.collection.push(newBook);
-    localStorage.setItem("collection", JSON.stringify(this.collection));
+    localStorage.setItem('collection', JSON.stringify(this.collection));
   }
 
   static removeFromCollection(target) {
@@ -56,20 +56,20 @@ class Storage {
       }
       return this.collection;
     });
-    localStorage.setItem("collection", JSON.stringify(this.collection));
+    localStorage.setItem('collection', JSON.stringify(this.collection));
   }
 
   static getBooksFromStorage() {
-    if (localStorage.getItem("collection") === null) {
+    if (localStorage.getItem('collection') === null) {
       this.collection = [];
     } else {
-      this.collection = JSON.parse(localStorage.getItem("collection"));
+      this.collection = JSON.parse(localStorage.getItem('collection'));
     }
     return this.collection;
   }
 }
 
-//functions
+// functions
 function addBook(e) {
   const title = bookTitle.value;
   const author = bookAuthor.value;
@@ -85,16 +85,16 @@ function addBook(e) {
 }
 
 function removeBook(e) {
-  if (e.target.className === "remove") {
+  if (e.target.className === 'remove') {
     UI.removeBookFromUI(e.target);
     Storage.removeFromCollection(e.target);
   }
 }
 
-//addeventlisteners
-form.addEventListener("submit", addBook);
-bookList.addEventListener("click", removeBook);
-document.addEventListener("DOMContentLoaded", () => {
+// addEventListeners
+form.addEventListener('submit', addBook);
+bookList.addEventListener('click', removeBook);
+document.addEventListener('DOMContentLoaded', () => {
   const allBooks = Storage.getBooksFromStorage();
   allBooks.forEach((book) => UI.addBookToUI(book));
 });
