@@ -50,7 +50,7 @@ UI.prototype.addBookToUI = function (newBook) {
     if (book.title === newBook.title) {
       if (index % 2 === 0) {
         bookList.innerHTML += `
-        <li class='book list-group-item-warning d-flex flex-row justify-content-between py-3'>
+        <li class='book list-group-item-secondary d-flex flex-row justify-content-between py-3'>
           <div class='d-flex flex-row ms-5'>
             <p class='book-title margin-sm fs-5'>${newBook.title}</p>
             <p class='book-author margin-sm fs-5'>&nbsp by ${newBook.author}</p>
@@ -60,7 +60,7 @@ UI.prototype.addBookToUI = function (newBook) {
         `;
       } else {
         bookList.innerHTML += `
-        <li class='book list-group-item-primary d-flex flex-row justify-content-between py-3'>
+        <li class='book list-group-item-light d-flex flex-row justify-content-between py-3'>
           <div class='d-flex flex-row ms-5'>
             <p class='book-title margin-sm fs-5'>${newBook.title}</p>
             <p class='book-author margin-sm fs-5'>&nbsp by ${newBook.author}</p>
