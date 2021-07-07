@@ -18,11 +18,14 @@ p {
   margin-bottom: 0;
 }
 
-.width-md {
-  width: 300px;
+.width-full {
+  width: 100%;
+}
+
+.container {
+  width: 40%;
 }
 
 .add {
   width: 100px;
-  margin-right: 30%;
 }
