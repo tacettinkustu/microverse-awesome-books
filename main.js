@@ -102,6 +102,7 @@ function removeBook(e) {
   if (e.target.className === "remove btn btn-danger me-5") {
     ui.removeBookFromUI(e.target);
     Storage.removeFromCollection(e.target);
+    location.reload();
   }
 }
 
