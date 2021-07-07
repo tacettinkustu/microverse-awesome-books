@@ -14,8 +14,7 @@ class Storage {
   }
 
   static removeFromCollection(target) {
-    const removeBook =
-      target.previousElementSibling.firstElementChild.textContent;
+    const removeBook = target.previousElementSibling.firstElementChild.textContent;
 
     this.collection.filter((book, index) => {
       if (book.title === removeBook) {
