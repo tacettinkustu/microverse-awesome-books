@@ -14,13 +14,12 @@ class Storage {
   }
 
   static removeFromCollection(target) {
-    const removeBook = target.previousElementSibling.firstElementChild.textContent;
+    const removeBook =
+      target.previousElementSibling.firstElementChild.textContent;
 
     this.collection.filter((book, index) => {
-      console.log(book.title, removeBook);
       if (book.title === removeBook) {
         this.collection.splice(index, 1);
-        console.log('hello');
       }
       return this.collection;
     });
@@ -101,7 +100,11 @@ function removeBook(e) {
   if (e.target.className === 'remove btn btn-danger me-5') {
     ui.removeBookFromUI(e.target);
     Storage.removeFromCollection(e.target);
-    Windows.location.reload();
+    /* eslint-disable */
+
+    location.reload();
+
+    /* eslint-enable */
   }
 }
 
