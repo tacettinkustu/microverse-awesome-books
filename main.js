@@ -14,7 +14,7 @@ class Storage {
   }
 
   static removeFromCollection(target) {
-    const removeBook = target.previousElementSibling.previousElementSibling.textContent;
+    const removeBook = target.previousElementSibling.firstElementChild.textContent;
 
     this.collection.filter((book, index) => {
       if (book.title === removeBook) {
@@ -43,14 +43,31 @@ function Book(title, author) {
 function UI() {}
 
 UI.prototype.addBookToUI = function (newBook) {
-  bookList.innerHTML += `
-        <li class='book'>
-          <p class='book-title margin-sm'>${newBook.title}</p>
-          <p class='book-author margin-sm'>${newBook.author}</p>
-          <button class='remove' type='button'>Remove</button>
-          <hr />
+  Storage.collection.forEach((book, index) => {
+    if (book.title === newBook.title) {
+      if (index % 2 === 0) {
+        bookList.innerHTML += `
+        <li class='book list-group-item-secondary d-flex flex-row justify-content-between py-3'>
+          <div class='d-flex flex-row ms-5'>
+            <p class='book-title margin-sm fs-5'>${newBook.title}</p>
+            <p class='book-author margin-sm fs-5'>&nbsp by ${newBook.author}</p>
+          </div>
+          <button class='remove btn btn-danger me-5' type='button'>Remove</button>
         </li>
-    `;
+        `;
+      } else {
+        bookList.innerHTML += `
+        <li class='book list-group-item-light d-flex flex-row justify-content-between py-3'>
+          <div class='d-flex flex-row ms-5'>
+            <p class='book-title margin-sm fs-5'>${newBook.title}</p>
+            <p class='book-author margin-sm fs-5'>&nbsp by ${newBook.author}</p>
+          </div>
+          <button class='remove btn btn-danger me-5' type='button'>Remove</button>
+        </li>
+        `;
+      }
+    }
+  });
 };
 
 UI.prototype.clearInputs = function (element1, element2) {
@@ -79,9 +96,14 @@ function addBook(e) {
 }
 
 function removeBook(e) {
-  if (e.target.className === 'remove') {
+  if (e.target.className === 'remove btn btn-danger me-5') {
     ui.removeBookFromUI(e.target);
     Storage.removeFromCollection(e.target);
+    /* eslint-disable */
+
+    location.reload();
+
+    /* eslint-enable */
   }
 }
 
@@ -89,6 +111,5 @@ form.addEventListener('submit', addBook);
 bookList.addEventListener('click', removeBook);
 document.addEventListener('DOMContentLoaded', () => {
   const allBooks = Storage.getBooksFromStorage();
-  console.log(allBooks);
   allBooks.forEach((book) => ui.addBookToUI(book));
 });

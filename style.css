@@ -1,18 +1,31 @@
+html {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  width: 50%;
+}
+
 ul {
   list-style-type: none;
   padding-left: 0;
 }
 
-.margin-sm {
-  margin: 0.25rem 0;
+p {
+  margin-bottom: 0;
 }
 
-.flex-column {
-  display: flex;
-  flex-direction: column;
-  width: 200px;
+.width-full {
+  width: 100%;
+}
+
+.container {
+  width: 40%;
 }
 
 .add {
-  width: 50px;
+  width: 100px;
 }
