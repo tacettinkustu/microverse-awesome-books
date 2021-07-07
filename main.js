@@ -1,7 +1,7 @@
-const form = document.querySelector('.add-book');
-const bookTitle = document.querySelector('.title');
-const bookAuthor = document.querySelector('.author');
-const bookList = document.querySelector('.book-list');
+const form = document.querySelector(".add-book");
+const bookTitle = document.querySelector(".title");
+const bookAuthor = document.querySelector(".author");
+const bookList = document.querySelector(".book-list");
 
 class Storage {
   constructor() {
@@ -10,28 +10,29 @@ class Storage {
 
   static addCollection(newBook) {
     this.collection.push(newBook);
-    localStorage.setItem('collection', JSON.stringify(this.collection));
+    localStorage.setItem("collection", JSON.stringify(this.collection));
   }
 
   static removeFromCollection(target) {
-    const removeBook = target.previousElementSibling.firstElementChild.textContent;
+    const removeBook =
+      target.previousElementSibling.firstElementChild.textContent;
 
     this.collection.filter((book, index) => {
-      console.log(book.title,removeBook)
+      console.log(book.title, removeBook);
       if (book.title == removeBook) {
         this.collection.splice(index, 1);
-        console.log("hello")
+        console.log("hello");
       }
       return this.collection;
     });
-    localStorage.setItem('collection', JSON.stringify(this.collection));
+    localStorage.setItem("collection", JSON.stringify(this.collection));
   }
 
   static getBooksFromStorage() {
-    if (localStorage.getItem('collection') === null) {
+    if (localStorage.getItem("collection") === null) {
       this.collection = [];
     } else {
-      this.collection = JSON.parse(localStorage.getItem('collection'));
+      this.collection = JSON.parse(localStorage.getItem("collection"));
     }
     return this.collection;
   }
@@ -45,20 +46,36 @@ function Book(title, author) {
 function UI() {}
 
 UI.prototype.addBookToUI = function (newBook) {
-  bookList.innerHTML += `
-        <li class='book list-group-item d-flex flex-row justify-content-between py-3'>
+  Storage.collection.forEach((book, index) => {
+    if (book.title === newBook.title) {
+      if (index % 2 === 0) {
+        bookList.innerHTML += `
+        <li class='book list-group-item-warning d-flex flex-row justify-content-between py-3'>
           <div class='d-flex flex-row ms-5'>
             <p class='book-title margin-sm fs-5'>${newBook.title}</p>
             <p class='book-author margin-sm fs-5'>&nbsp by ${newBook.author}</p>
           </div>
           <button class='remove btn btn-danger me-5' type='button'>Remove</button>
         </li>
-    `;
+        `;
+      } else {
+        bookList.innerHTML += `
+        <li class='book list-group-item-primary d-flex flex-row justify-content-between py-3'>
+          <div class='d-flex flex-row ms-5'>
+            <p class='book-title margin-sm fs-5'>${newBook.title}</p>
+            <p class='book-author margin-sm fs-5'>&nbsp by ${newBook.author}</p>
+          </div>
+          <button class='remove btn btn-danger me-5' type='button'>Remove</button>
+        </li>
+        `;
+      }
+    }
+  });
 };
 
 UI.prototype.clearInputs = function (element1, element2) {
-  element1.value = '';
-  element2.value = '';
+  element1.value = "";
+  element2.value = "";
 };
 
 UI.prototype.removeBookFromUI = function (target) {
@@ -82,15 +99,15 @@ function addBook(e) {
 }
 
 function removeBook(e) {
-  if (e.target.className === 'remove btn btn-danger me-5') {
+  if (e.target.className === "remove btn btn-danger me-5") {
     ui.removeBookFromUI(e.target);
     Storage.removeFromCollection(e.target);
   }
 }
 
-form.addEventListener('submit', addBook);
-bookList.addEventListener('click', removeBook);
-document.addEventListener('DOMContentLoaded', () => {
+form.addEventListener("submit", addBook);
+bookList.addEventListener("click", removeBook);
+document.addEventListener("DOMContentLoaded", () => {
   const allBooks = Storage.getBooksFromStorage();
   allBooks.forEach((book) => ui.addBookToUI(book));
 });
