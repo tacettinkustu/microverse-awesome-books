@@ -59,3 +59,7 @@ a:hover {
 .nav-link {
   font-size: 1.1rem;
 }
+
+.pr-10 {
+  padding-right: 90px;
+}

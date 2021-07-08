@@ -13,10 +13,10 @@
     />
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body onload="startTime()">
     <header>
-      <nav class="navbar fixed-top navbar-dark bg-primary py-3">
-        <div class="container-fluid">
+      <nav class="fixed-top d-flex flex-column">
+        <div class="container-fluid navbar-dark bg-primary py-2 navbar">
           <a class="navbar-brand mx-5 fs-4" href="#list">Awesome Books</a>
           <ul class="nav mx-5 justify-content-between container">
             <li class="nav-item">
@@ -32,6 +32,7 @@
             </li>
           </ul>
         </div>
+        <article class="time bg-white text-end py-1 pr-10 fs-5" id="time"></article>
       </nav>
     </header>
     <section class="block" id="list">
