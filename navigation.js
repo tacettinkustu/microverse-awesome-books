@@ -36,13 +36,14 @@ function startTime() {
     'November',
     'December',
   ];
-  const today = new Date();
-  const k = today.getMonth();
-  const l = today.getDate();
-  const n = today.getFullYear();
-  const h = today.getHours();
-  let m = today.getMinutes();
-  let s = today.getSeconds();
+  const DateTime = luxon.DateTime;
+  const time = DateTime.now().setZone("America/Los_Angeles");
+  const k = time.c.month;
+  const l = time.c.day;
+  const n = time.c.year;
+  const h = time.c.hour;
+  let m = time.c.minute;
+  let s = time.c.second;
   m = checkTime(m);
   s = checkTime(s);
   document.getElementById('time').innerHTML = `${monthNames[k]} ${l} ${n}, ${h}:${m}:${s}`;
