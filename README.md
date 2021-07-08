@@ -25,7 +25,7 @@ It is built as a part of Microverse Web Developer Course.
 
 ## Getting Started
 
-To get a local copy up and running usual steps.
+To get a local copy up and running usual steps. Because there is no framework or any other special way. There is only JS, HTML and CSS.
 
 
 ## Authors
