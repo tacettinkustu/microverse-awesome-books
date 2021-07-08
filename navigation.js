@@ -16,7 +16,7 @@ links.forEach((link) => {
 
 function checkTime(i) {
   if (i < 10) {
-    i = '0' + i;
+    i = `0${i}`;
   }
   return i;
 }
@@ -45,8 +45,8 @@ function startTime() {
   let s = today.getSeconds();
   m = checkTime(m);
   s = checkTime(s);
-  document.getElementById('time').innerHTML = monthNames[k] + ' ' + l + ' ' + n + ', ' + h + ':' + m + ':' + s;
+  document.getElementById('time').innerHTML = `${monthNames[k]} ${l} ${n}, ${h}:${m}:${s}`;
   setTimeout(startTime, 1000);
 }
 
-startTime()
+startTime();
