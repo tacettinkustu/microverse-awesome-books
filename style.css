@@ -7,6 +7,12 @@ html {
 
 body {
   width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+section {
+  margin-top: 20%;
 }
 
 ul {
@@ -18,6 +24,10 @@ p {
   margin-bottom: 0;
 }
 
+a:hover {
+  opacity: 0.9;
+}
+
 .width-full {
   width: 100%;
 }
@@ -26,6 +36,30 @@ p {
   width: 40%;
 }
 
+.container-60 {
+  width: 60%;
+}
+
+.container-80 {
+  width: 80%;
+}
+
 .add {
   width: 100px;
+}
+
+.none {
+  display: none;
+}
+
+.block {
+  display: block;
+}
+
+.nav-link {
+  font-size: 1.1rem;
+}
+
+.pr-10 {
+  padding-right: 90px;
 }

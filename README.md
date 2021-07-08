@@ -27,6 +27,10 @@ It is built as a part of Microverse Web Developer Course.
 
 To get a local copy up and running usual steps.
 
+To get the content of this project locally you need to run this command in your terminal:
+
+- `https://github.com/tacettinkustu/microverse-awesome-books.git`
+
 
 ## Authors
 👤 **Shonibare Adewunmi Comfort**
