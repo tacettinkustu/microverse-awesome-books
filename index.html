@@ -17,13 +17,10 @@
     <header>
       <nav class="navbar fixed-top navbar-dark bg-primary py-3">
         <div class="container-fluid">
-          <a class="navbar-brand mx-5" href="#list">Awesome Books</a>
+          <a class="navbar-brand mx-5 fs-4" href="#list">Awesome Books</a>
           <ul class="nav mx-5 justify-content-between container">
             <li class="nav-item">
-              <a
-                class="nav-link text-white active"
-                aria-current="page"
-                href="#list"
+              <a class="nav-link text-white" aria-current="page" href="#list"
                 >Booklist</a
               >
             </li>
@@ -37,8 +34,8 @@
         </div>
       </nav>
     </header>
-    <section class="mt-5" id="list">
-      <h1 class="main-title text-center py-5 text-primary">Awesome Books</h1>
+    <section class="block" id="list">
+      <h1 class="main-title text-center pb-5 text-primary">Awesome Books</h1>
       <ul class="book-list list-group mb-5 border">
         <!-- <li class="book list-group-item d-flex flex-row">
           <p class="book-title margin-sm">"Lorem ipsum"</p>
@@ -47,7 +44,7 @@
         </li> -->
       </ul>
     </section>
-    <section class="container" id="add">
+    <section class="container-60 align-self-center none" id="add">
       <form
         action="#"
         class="
@@ -70,18 +67,25 @@
         </button>
       </form>
     </section>
-    <div class="text-center">
+    <section class="text-center none" id="contact">
       <h3 class="fs-3 mb-3 text-primary pt-5">Contact Information</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit expedita impedit commodi atque deleniti excepturi laboriosam quam, dicta, soluta iusto nisi nostrum magni. </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit expedita
+        impedit commodi atque deleniti excepturi laboriosam quam, dicta, soluta
+        iusto nisi nostrum magni.
+      </p>
       <ul class="pt-5 list-unstyled">
-      <li class="list-item"> <h5 class="font-weight-bolder"> Email:</h5>mail@gmail.com</li>
-      <li class="list-item">Phone number: 02253489</li>
-      <li class="list-item">Address: lorem city country</li>
-    </ul>
-    </div>
-    <footer class="contact fixed-bottom bg-secondary" id="contact">
-      <div class="container">
-        <p class="copyright">&copy; Copyright</p>
+        <li class="list-item">
+          <h5 class="font-weight-bolder">Email:</h5>
+          mail@gmail.com
+        </li>
+        <li class="list-item">Phone number: 02253489</li>
+        <li class="list-item">Address: lorem city country</li>
+      </ul>
+    </section>
+    <footer class="contact fixed-bottom bg-secondary">
+      <div class="py-2 px-5">
+        <p class="copyright text-white">&copy; All rights reserved.</p>
       </div>
     </footer>
     <script src="navigation.js"></script>
