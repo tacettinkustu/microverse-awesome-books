@@ -15,7 +15,9 @@ links.forEach((link) => {
 });
 
 function startTime() {
+  /* eslint-disable */
   const { DateTime } = luxon;
+  /* eslint-enable */
   const time = DateTime.now().setZone('Europe/Paris');
   const now = time.toLocaleString(DateTime.DATETIME_MED_WITH_SECONDS);
 
