@@ -25,7 +25,7 @@ It is built as a part of Microverse Web Developer Course.
 
 ## Getting Started
 
-To get a local copy up and running usual steps. Because there is no framework or any other special way. There is only plain JS, HTML and CSS. So you can get a local copy and running it in a code editor.
+To get a local copy up and running usual steps.
 
 To get the content of this project locally you need to run this command in your terminal:
 
