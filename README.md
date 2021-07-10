@@ -2,7 +2,7 @@
 > This is a project that displays a list of books and allows you to add and remove books from that list.
 
 
-It is built as a part of Microverse Web Developer Course.
+It is built as a part of Microverse Web Developer Course. This page is not responsive. It will be made responsive in future studies.
 
 ![Ekran Alıntısı](https://user-images.githubusercontent.com/51737508/124498925-d4989f80-ddc5-11eb-9a99-6eb3126ee9c7.PNG)
 
